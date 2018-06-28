@@ -3,6 +3,18 @@ from datetime import datetime
 from django.db import models
 
 
+class City(models.Model):
+    """
+    机构所在城市信息
+    """
+    name = models.CharField(max_length=50, verbose_name="城市名称")
+    create_time = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        verbose_name = "城市信息"
+        verbose_name_plural = verbose_name
+
+
 class Organization(models.Model):
     """
     组织机构
@@ -19,18 +31,6 @@ class Organization(models.Model):
 
     class Meta:
         verbose_name = "组织机构"
-        verbose_name_plural = verbose_name
-
-
-class City(models.Model):
-    """
-    机构所在城市信息
-    """
-    name = models.CharField(max_length=50, verbose_name="城市名称")
-    create_time = models.DateTimeField(default=datetime.now)
-
-    class Meta:
-        verbose_name = "城市信息"
         verbose_name_plural = verbose_name
 
 
