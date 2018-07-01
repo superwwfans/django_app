@@ -39,7 +39,7 @@ class Teacher(models.Model):
     机构教师信息
     """
     name = models.CharField(max_length=50, verbose_name="教师姓名")
-    work_year = models.IntegerField(max_length=10, verbose_name="工龄")
+    work_year = models.IntegerField(verbose_name="工龄")
     work_company = models.CharField(max_length=20, verbose_name="工作单位")
     position = models.CharField(max_length=20, verbose_name="职位")
     feature = models.CharField(max_length=100, verbose_name="教学特点")

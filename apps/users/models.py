@@ -11,10 +11,10 @@ class UserProfile(AbstractUser):
     """
     nick_name = models.CharField(max_length=50, default="", verbose_name="昵称")
     birthday = models.DateField(null=True, blank=True, verbose_name="生日")
-    gender = models.CharField(choices=(("male", "男"), ("male", "女")), default="female", max_length=5)
-    address = models.CharField(max_length=100, default="")
-    mobile = models.CharField(max_length=11, null=True, blank=True)
-    image = models.ImageField(upload_to="images/%Y/%m", default="images/default.png", max_length=100)
+    gender = models.CharField(choices=(("male", "男"), ("male", "女")), default="female", max_length=6, verbose_name="性别")
+    address = models.CharField(max_length=100, default="", verbose_name="住址")
+    mobile = models.CharField(max_length=11, null=True, blank=True, verbose_name="手机号")
+    image = models.ImageField(upload_to="images/%Y/%m", default="images/default.png", max_length=100, verbose_name="头像")
 
     def __str__(self):
         return self.username
