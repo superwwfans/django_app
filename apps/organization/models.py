@@ -8,7 +8,10 @@ class City(models.Model):
     机构所在城市信息
     """
     name = models.CharField(max_length=50, verbose_name="城市名称")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "城市信息"
@@ -25,9 +28,12 @@ class Organization(models.Model):
     address = models.CharField(max_length=200, verbose_name="机构地址")
     click_nums = models.IntegerField(verbose_name="点击数")
     collect_nums = models.IntegerField(verbose_name="收藏数")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="所在城市")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "组织机构"
@@ -45,9 +51,12 @@ class Teacher(models.Model):
     feature = models.CharField(max_length=100, verbose_name="教学特点")
     click_nums = models.IntegerField(verbose_name="点击数")
     collect_nums = models.IntegerField(verbose_name="收藏数")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "教师信息"

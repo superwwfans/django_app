@@ -23,7 +23,10 @@ class Course(models.Model):
     collect_nums = models.IntegerField(default=0, verbose_name="收藏数")
     click_nums = models.IntegerField(default=0, verbose_name="点击数")
     image = models.ImageField(upload_to="courses/%Y-%m", verbose_name="课程封面")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "课程信息"
@@ -35,8 +38,11 @@ class Chapter(models.Model):
     课程下的章节
     """
     name = models.CharField(max_length=100, verbose_name="章节名称")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="章节课程")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "课程章节"
@@ -48,8 +54,11 @@ class Video(models.Model):
     章节下的视频
     """
     name = models.CharField(max_length=100, verbose_name="视频名称")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "章节视频"
@@ -61,11 +70,12 @@ class CourseSource(models.Model):
     课程资源
     """
     name = models.CharField(max_length=100, verbose_name="资源名称")
-    create_time = models.DateTimeField(default=datetime.now)
+    create_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "课程资源"
         verbose_name_plural = verbose_name
-
-        

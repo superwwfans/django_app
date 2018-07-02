@@ -30,6 +30,7 @@ class CourseComment(models.Model):
     comments = models.CharField(max_length=200, verbose_name="评论")
     create_time = models.DateTimeField(default=datetime.now, verbose_name="创建时间")
 
+
     class Meta:
         verbose_name = "课程评论"
         verbose_name_plural = verbose_name
