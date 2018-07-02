@@ -13,8 +13,20 @@
 __author__ = 'huang'
 
 import xadmin
+from xadmin import views
 
-from .models import  EmailVerifyRecord, Banner
+from .models import EmailVerifyRecord, Banner
+
+
+class BaseSetting:
+    enable_themes = True
+    use_bootswatch = True
+
+
+class GlobalSetting:
+    site_title = "网站后台"
+    site_footer = "Python小屋"
+    menu_style = "accordion"
 
 
 class EmailVerifyRecordAdmin:
@@ -32,3 +44,6 @@ class BannerAdmin:
 
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
+
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+xadmin.site.register(views.CommAdminView, GlobalSetting)
